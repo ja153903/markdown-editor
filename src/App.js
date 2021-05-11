@@ -11,7 +11,7 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto py-5">
+    <div className="container py-5 mx-auto space-y-4">
       <MarkdownPosts handlePostClick={updateCurrentPost} />
       <MarkdownEditor post={currentPost} />
     </div>

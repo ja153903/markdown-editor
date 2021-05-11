@@ -4,9 +4,7 @@ export default function useMarkdownInput(post) {
   const [markdownInput, setMarkdownInput] = useState("");
 
   useEffect(() => {
-    if (post) {
-      setMarkdownInput(post?.post ?? "");
-    }
+    setMarkdownInput(post?.post ?? "");
   }, [post]);
 
   return [markdownInput, setMarkdownInput];

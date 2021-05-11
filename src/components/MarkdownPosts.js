@@ -24,8 +24,8 @@ export default function MarkdownPosts({ handlePostClick }) {
     return <ErrorMessage text="Cannot fetch posts" />;
   }
 
-  return (
-    <ul className="list-outside list-disc flex flex-row flex-wrap justify-evenly">
+  const renderPostButtons = () => (
+    <>
       {data.allPosts.map(({ id, post, title }) => (
         <li key={`${id} ${title}`}>
           <button
@@ -37,6 +37,21 @@ export default function MarkdownPosts({ handlePostClick }) {
           </button>
         </li>
       ))}
+    </>
+  );
+
+  return (
+    <ul className="list-outside list-disc flex flex-row flex-wrap justify-evenly">
+      {renderPostButtons()}
+      <li>
+        <button
+          type="button"
+          className="px-3 py-3 border-2 border-green-500 rounded-md"
+          onClick={() => handlePostClick(null)}
+        >
+          Add new post
+        </button>
+      </li>
     </ul>
   );
 }
