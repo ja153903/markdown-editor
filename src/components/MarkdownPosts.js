@@ -1,17 +1,9 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 import ErrorMessage from "./ErrorMessage";
 import LoadingMessage from "./LoadingMessage";
 
-const GET_ALL_POSTS = gql`
-  query GetAllPosts {
-    allPosts {
-      id
-      title
-      post
-    }
-  }
-`;
+import { GET_ALL_POSTS } from "../graphql/queries";
 
 export default function MarkdownPosts({ handlePostClick }) {
   const { loading, error, data } = useQuery(GET_ALL_POSTS);

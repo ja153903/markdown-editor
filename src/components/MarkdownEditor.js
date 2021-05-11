@@ -1,29 +1,15 @@
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { useMutation, gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
 import useMarkdownInput from "../hooks/useMarkdownInput";
 import useTitle from "../hooks/useTitle";
 import usePostId from "../hooks/usePostId";
 
+import { CREATE_NEW_POST, UPDATE_POST } from "../graphql/queries";
+
 import "katex/dist/katex.min.css";
-
-const CREATE_NEW_POST = gql`
-  mutation CreateNewPost($title: String, $post: String) {
-    createPost(title: $title, post: $post) {
-      id
-    }
-  }
-`;
-
-const UPDATE_POST = gql`
-  mutation UpdatePost($id: ID, $post: String) {
-    updatePost(id: $id, post: $post) {
-      id
-    }
-  }
-`;
 
 const remarkPlugins = [remarkMath];
 const rehypePlugins = [rehypeKatex];
